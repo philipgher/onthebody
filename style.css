@@ -9,8 +9,6 @@ body {
 	font-size: 12px;
 	line-height: 30px;
 	color: #777;
-	/*	background: #c9fff6;*/
-	
 	background: black;
 }
 
@@ -19,6 +17,11 @@ body {
 	width: 100%;
 	margin: 0 auto;
 	position: relative;
+}
+
+.galleryh1 {
+	color: #FFF;
+	font-size: 2.8em;
 }
 
 .contact {
@@ -122,7 +125,7 @@ fieldset {
 }
 
 .container_gallery img {
-	max-width: 45%;
+	max-width: 49%;
 	margin: 5px;
 }
 
@@ -160,7 +163,7 @@ fieldset {
 	width: 30%;
 	text-align: center;
 	padding: 10px;
-	position: absolute;
+	position: fixed;
 	top: 200px;
 	right: 34%;
 	box-shadow: 0px 0px 1000px #000000 !important;
@@ -170,7 +173,7 @@ fieldset {
 	width: 100vw;
 	height: 100vh;
 	background-color: rgba(0, 0, 0, 0.5);
-	position: absolute;
+	position: fixed;
 	top: 0;
 	right: 0;
 }

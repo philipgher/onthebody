@@ -2,42 +2,76 @@
 <html>
 
 <head>
+	<meta charset="UTF-8">
 	<title>I agree</title>
 	<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 	<script>
-		var dir = "./data";
-		var fileextension = ".jpg";
-		var lastPhoto;
-		setInterval(function () {
-			$.ajax({
-				url: dir, success: function (data) {
-					var files = $(data).find("a:contains(" + fileextension + ")");
-					var lastFile = $(files[files.length-1]).attr('href');
-					$('.container').css('background-image', 'url(/Explode_test/data/'+lastFile+')');
-				}
-			});
-		}, 500);
+		$(document).ready(function () {
+			var dir = "./data/";
+			var fileextension = ".jpg";
+
+			setInterval(function () {
+				$.ajax({
+					url: dir,
+					success: function (data) {
+						var files = $(data).find("a:contains(" + fileextension + ")");
+						console.log(files);
+						var lastFile1 = $(files[files.length - 1]).attr('href');
+						var lastFile2 = $(files[files.length - 2]).attr('href');
+						var lastFile3 = $(files[files.length - 3]).attr('href');
+						var lastFile4 = $(files[files.length - 4]).attr('href');
+						$('.container:nth-child(1)').css('background-image', 'url(' + dir + lastFile1 + ')');
+						$('.container:nth-child(2)').css('background-image', 'url(' + dir + lastFile2 + ')');
+						$('.container:nth-child(3)').css('background-image', 'url(' + dir + lastFile3 + ')');
+						$('.container:nth-child(4)').css('background-image', 'url(' + dir + lastFile4 + ')');
+					}
+				});
+			}, 500);
+		});
 	</script>
 	<style>
-		html, body{
-			width:100%;
-			height:100%;
+		html,
+		body {
+			width: 100%;
+			height: 100%;
 			margin: 0;
 			padding: 0;
 		}
-		.container{
+		
+		.container {
+			position: absolute;
 			background-position: center center;
 			background-size: cover;
-			width: 100%;
-			height:100%;
+			width: 50%;
+			height: 50%;
 		}
-		img{
+		
+		.container:nth-child(2) {
+			left: 50%;
+		}
+		
+		.container:nth-child(3) {
+			top: 50%;
+		}
+		
+		.container:nth-child(4) {
+			top: 50%;
+			left: 50%;
+		}
+		
+		img {
 			display: none;
 		}
 	</style>
 </head>
 
 <body>
+	<div class="container">
+	</div>
+	<div class="container">
+	</div>
+	<div class="container">
+	</div>
 	<div class="container">
 	</div>
 </body>
