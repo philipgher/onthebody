@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>I agree</title>
+	<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+	<script>
+		var dir = "./data";
+		var fileextension = ".jpg";
+		var lastPhoto;
+		setInterval(function () {
+			$.ajax({
+				url: dir, success: function (data) {
+					var files = $(data).find("a:contains(" + fileextension + ")");
+					var lastFile = $(files[files.length-1]).attr('href');
+					$('.container').css('background-image', 'url(/Explode_test/data/'+lastFile+')');
+				}
+			});
+		}, 500);
+	</script>
+	<style>
+		html, body{
+			width:100%;
+			height:100%;
+			margin: 0;
+			padding: 0;
+		}
+		.container{
+			background-position: center center;
+			background-size: cover;
+			width: 100%;
+			height:100%;
+		}
+		img{
+			display: none;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+	</div>
+</body>
+
+</html>

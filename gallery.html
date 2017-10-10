@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<head>
+	<link rel="stylesheet" media="all" href="style.css">
+	<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+	<script>
+		$(document).ready(function () {
+			$('body').on('click', '.img_gallery', function () {
+				console.log("Hello!");
+				$('.popup').css({
+					"display": "block"
+				});
+			});
+
+			$('body').on('click', '#back', function () {
+				console.log("Hello!");
+				$('.popup').css({
+					"display": "none"
+				});
+			});
+
+			var folder = "data/";
+			$.ajax({
+				url: folder,
+				success: function (data) {
+					$(data).find("a").attr("href", function (i, val) {
+						if (val.match(/\.(jpe?g|png|gif)$/) && val.includes("Big")) {
+							$(".container_gallery").append("<img class='img_gallery' src='" + val + "'>");
+						}
+					});
+				}
+			});
+		});
+	</script>
+</head>
+
+<html>
+
+<body>
+	<h1>Select your photo</h1>
+	<div class="container_gallery">
+	</div>
+	<div class="popup cover"></div>
+	<form class="popup contact contact_confirm" action="pay.html">
+		<h1>Sure?</h1>
+		<button type="submit" id="submit">Yes</button>
+		<div class="popup" id="back">No</div>
+	</form>
+</body>
+
+</html>
