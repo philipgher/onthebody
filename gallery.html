@@ -19,13 +19,13 @@
 				});
 			});
 
-			var folder = "data/";
+			var folder = "./data/";
 			$.ajax({
 				url: folder,
 				success: function (data) {
 					$(data).find("a").attr("href", function (i, val) {
 						if (val.match(/\.(jpe?g|png|gif)$/) && val.includes("Big")) {
-							$(".container_gallery").append("<img class='img_gallery' src='" + val + "'>");
+							$(".container_gallery").append("<img class='img_gallery' src='" + folder + val + "'>");
 						}
 					});
 				}
