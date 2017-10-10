@@ -19,11 +19,8 @@
 				});
 			});
 
-			var folder = "https://philipgher.github.io/onthebody/data/";
+			var folder = "./data/";
 			$.ajax({
-				dataType: 'jsonp',
-				data: 'id=10',
-				jsonp: 'jsonp_callback',
 				url: folder,
 				success: function (data) {
 					$(data).find("a").attr("href", function (i, val) {
